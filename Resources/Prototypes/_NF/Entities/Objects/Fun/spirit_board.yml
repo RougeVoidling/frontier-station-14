@@ -1,0 +1,13 @@
+- type: entity
+  parent: BaseItem
+  id: SpiritBoard
+  name: spirit board
+  description: A board that claims a link to the spirit realm. Instructions say to lay on the floor, then place your hand on it.
+  components:
+  - type: Sprite
+    sprite: _NF/Objects/Fun/spirit_board.rsi
+    state: inactive
+  - type: Item
+  - type: SpiritBoard
+
+
