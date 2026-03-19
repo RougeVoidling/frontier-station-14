@@ -1,0 +1,13 @@
+<DefaultWindow xmlns="https://spacestation14.io"
+               xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+               Title="{Loc 'hand-labeler-ui-header'}">
+    <BoxContainer Orientation="Vertical" SeparationOverride="4" MinWidth="150">
+        <LineEdit Name="MessageLineEdit" />
+        <!--TODO: LOCALIZE-->
+        <BoxContainer Orientation="Horizontal" Align="Center">
+            <Button Name="SendButton" Text="Send"/>
+            <Control MinSize="20 0"/>
+            <Button Name="CancelButton" Text="Don't Send"/>
+        </BoxContainer>
+    </BoxContainer>
+</DefaultWindow>
