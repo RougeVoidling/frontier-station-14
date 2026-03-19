@@ -15,8 +15,7 @@ public sealed class SpiritBoardSystem : EntitySystem
 
     public override void Initialize()
     {
-        SubscribeLocalEvent<SpiritBoardComponent, GetVerbsEvent<ActivationVerb>>(GetSeanceVerb);
-        SubscribeLocalEvent<SpiritBoardComponent, GetVerbsEvent<ActivationVerb>>(GetChannelVerb);
+        SubscribeLocalEvent<SpiritBoardComponent, GetVerbsEvent<ActivationVerb>>(GetVerbs);
     }
 
     /// <summary>
@@ -26,6 +25,13 @@ public sealed class SpiritBoardSystem : EntitySystem
     public override void Update(float frameTime)
     {
         base.Update(frameTime);
+    }
+
+    //This is needed because you can't have multiple subscriptions to the same event
+    public void GetVerbs(EntityUid ent, SpiritBoardComponent comp, GetVerbsEvent<ActivationVerb> eventArgs)
+    {
+        GetChannelVerb(ent, comp, eventArgs);
+        GetSeanceVerb(ent, comp, eventArgs);
     }
 
     /// <summary>
@@ -44,7 +50,7 @@ public sealed class SpiritBoardSystem : EntitySystem
         {
             Act = () =>
             {
-                _popupSystem.PopupEntity(Loc.GetString("spirit-board-channeling-started-placeholder"), uid);
+                _popupSystem.PopupEntity(Loc.GetString("spirit-board-placeholder-ghost-opened-ui"), uid);
             },
 
             Text = Loc.GetString("spirit-board-ghost-seance-verb"),
