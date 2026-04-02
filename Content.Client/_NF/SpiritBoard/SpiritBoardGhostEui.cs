@@ -17,5 +17,10 @@ public sealed class SpiritBoardGhostEui : BaseEui
         {
             _window.Close();
         };
+
+        _window.OnCancel += =>
+        {
+            _window.Close();
+        };
     }
 }
